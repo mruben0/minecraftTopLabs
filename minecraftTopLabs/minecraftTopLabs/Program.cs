@@ -52,7 +52,7 @@ namespace minecraftTopLabs
 
                 Console.WriteLine($"miner's name is {gago.gminerName}");
                 Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
-                Console.Write("miner's healt: "); gago.healthIndicator();
+                Console.Write("miner's health: "); gago.healthIndicator();
                 Console.WriteLine(" ");
                 
 

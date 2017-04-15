@@ -30,8 +30,11 @@ namespace minecraftTopLabs
             set
             {
                 if (value >= 0 && value <= 10000)
-                { 
-                    amount = value; }
+                {
+                    amount = value;
+                }
+                else if (value > 10000) amount = 10000;
+                else amount = 1;
             }
         }
 

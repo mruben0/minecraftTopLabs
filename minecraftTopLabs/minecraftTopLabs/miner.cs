@@ -12,7 +12,7 @@ namespace minecraftTopLabs
         string minerName;
         public string gminerName
         {
-            get { return minerName; }
+            get { return minerName.ToUpper(); }
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
@@ -29,11 +29,14 @@ namespace minecraftTopLabs
             }
             set
             {
-                if (perHit <= 10000 && perHit >= 0)
+                if (value <= 100 && value >= 1)
                 {
                     perHit = value;
                 }
-
+                else if (value > 100)
+                    perHit = 100;
+                else if (value < 1)
+                    perHit = 1;
             }
         }
 
@@ -43,15 +46,18 @@ namespace minecraftTopLabs
             get { return health; }
             set
             {
-                if (health <= 20)
+                if (value <= 20 && value >= 0)
                     health = value;
-            }
+                else if (value > 20)
+                    health = 20;
+                else health = 0;
+            } 
 
         }
 
         public int healthChange()
         {
-            if (gPerHit > 0)
+            if (gPerHit >= 0)
             {
                 gHealth -= 1;
             }
