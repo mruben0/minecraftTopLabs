@@ -8,8 +8,10 @@ using minecraftTopLabs;
 namespace minecraftTopLabs
 {
 
-    class mine
+    public class mine
     {
+
+        //նշանակում եմ հանք կլասի անունը
         string name = "yo";
         public string gName
         {
@@ -20,9 +22,11 @@ namespace minecraftTopLabs
                 }
         }
 
-
+        // type-ը վերցնում եմ նախորոք հայտարարված enum-Ից
         public mineType type;
 
+
+        //ստեղծում եմ amount, չեմ թողնում, որ 10000-ից մեծ արժեք ընդունի
         int amount;
         public int gAmount
         {
@@ -38,7 +42,7 @@ namespace minecraftTopLabs
             }
         }
 
-           
+           //նշանակում եմ state,, կախված amount-ից
         string state;
         public string gState
         {
@@ -61,12 +65,18 @@ namespace minecraftTopLabs
                 return state;
             }
         }
+
+        //ստեղծում եմ PH, որը հետո հավասար կլինի խաղացողի perHit-ին
         public int PH;
+        
+        //delegate -ով ստեղծում եմ ֆունկցիա, որից կախված խաղացողը կվնասվի
         public mininng.injury playerInjury { get; set; }
         public void injury()
         {
             injury();
         }
+
+        //delegate-Ով ֆունկցիա, որը կպակասեցնի amount-ը
         public int pooring()
         {
           

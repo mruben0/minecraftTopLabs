@@ -7,7 +7,9 @@ using minecraftTopLabs;
 
 namespace minecraftTopLabs
 {
-    class mininng
+
+    //հատուկ ստեղծված կլաս` delegate պահելու համար
+   public class mininng
     {
         public delegate int mining();
         public delegate int injury();

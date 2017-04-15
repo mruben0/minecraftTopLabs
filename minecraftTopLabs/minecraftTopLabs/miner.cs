@@ -7,8 +7,10 @@ using minecraftTopLabs;
 
 namespace minecraftTopLabs
 {
-    class miner
+    public class miner
     {
+
+        //դե անուն եմ նշանակում խաղացողի կլասին
         string minerName;
         public string gminerName
         {
@@ -20,6 +22,9 @@ namespace minecraftTopLabs
                     minerName = value;
             }
         }
+
+        //խաղացողի կլասին նշանակում եմ perHit, որը ցույց կտա, թե ինչքնով է նվազում
+        // հանքի amount-ը, չեմ թողնում, որ դա մեծ լինի 100-ից
         int perHit;
         public int gPerHit
         {
@@ -40,6 +45,7 @@ namespace minecraftTopLabs
             }
         }
 
+        //ստեղծում եմ խաղացողի առոջություն, որը մեծ չի լինի 20-ից
         int health;
         public int gHealth
         {
@@ -55,6 +61,7 @@ namespace minecraftTopLabs
 
         }
 
+        //ստեղծում եմ խաղացողի համար վնասվելու ֆունկցիա (delegate min-ի injuery -ին)
         public int healthChange()
         {
             if (gPerHit >= 0)
@@ -64,6 +71,8 @@ namespace minecraftTopLabs
             return gHealth;
         }
 
+
+        //ֆունկցիա, որը գրաֆիկական ձևով ցույց կտա խաղացողի առողջությունը
         public void healthIndicator()
         {
             for (int i = 0; i < gHealth; i++)
@@ -74,8 +83,11 @@ namespace minecraftTopLabs
             Console.WriteLine($"({gHealth})");
         }
 
+        //delegat Mine-ում amount-ը նվազեցնելու (նայել mine class-Ի pooring ֆունկցիան)
         public mininng.mining mining { get; set; }
 
+        //ստեղծում եմ place, որը համարժեք է Mine-ի type-ին, որ ըստ դրա 
+        //պակասի խաղացողի առողջությունը
         public mineType place;
         public int injury()
         {
@@ -88,6 +100,7 @@ namespace minecraftTopLabs
             return gHealth;
         }
 
+        //delegate հանքի pooring-Ին
         public void working()
 
         {
