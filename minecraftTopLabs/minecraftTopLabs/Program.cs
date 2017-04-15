@@ -9,8 +9,10 @@ namespace minecraftTopLabs
 {
     class Program
     {
+        
         static void Main(string[] args)
         {
+
             mine firstMine = new mine();
             Console.Write("set name for mine ");
             firstMine.gName = Console.ReadLine();
@@ -24,7 +26,7 @@ namespace minecraftTopLabs
 
             Console.Write("add amount (0 to 10 000) ");
             firstMine.gAmount = Convert.ToInt32(Console.ReadLine());
-            
+
 
             miner gago = new miner();
             Console.Write("set miners name ");
@@ -32,43 +34,67 @@ namespace minecraftTopLabs
             Console.Write("miners power (from 1 to 100) ");
             gago.gPerHit = Convert.ToInt32(Console.ReadLine());
             Console.Write("miners health(from 1 to 20) ");
-            gago.gHealth = Convert.ToInt32(Console.ReadLine()); 
+            gago.gHealth = Convert.ToInt32(Console.ReadLine());
             gago.mining = firstMine.pooring;
             gago.place = firstMine.type;
 
-            Console.WriteLine("Before mining");
+            string ok = "y";
+            while (ok == "y")
+            {
+               
 
-            Console.WriteLine($"mine name is {firstMine.gName}");
-            Console.WriteLine($"mine type is {firstMine.type}");
-            Console.WriteLine($"mine amount is {firstMine.gAmount}");
-            Console.WriteLine($"mine state is {firstMine.gState}");
+                Console.WriteLine("Before mining");
 
-            Console.WriteLine($"miner's name is {gago.gminerName}");
-            Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
-            Console.Write("miner's healt: "); gago.healthIndicator();
-            Console.WriteLine(" ");
-            Console.WriteLine("After one hit");
+                Console.WriteLine($"mine name is {firstMine.gName}");
+                Console.WriteLine($"mine type is {firstMine.type}");
+                Console.WriteLine($"mine amount is {firstMine.gAmount}");
+                Console.WriteLine($"mine state is {firstMine.gState}");
 
-            firstMine.playerInjury = gago.injury; 
- 
+                Console.WriteLine($"miner's name is {gago.gminerName}");
+                Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
+                Console.Write("miner's healt: "); gago.healthIndicator();
+                Console.WriteLine(" ");
+                
 
-            firstMine.PH = gago.gPerHit;
-
-            firstMine.playerInjury();
-            gago.mining();
+                firstMine.playerInjury = gago.injury;
 
 
-            Console.WriteLine($"mine name is {firstMine.gName}");
-            Console.WriteLine($"mine type is {firstMine.type}");
-            Console.WriteLine($"mine amount is {firstMine.gAmount}");
-            Console.WriteLine($"mine state is {firstMine.gState}");
+                firstMine.PH = gago.gPerHit;
 
-            Console.WriteLine($"miners name is {gago.gminerName}");
-            Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
-            Console.Write("miners healt: "); gago.healthIndicator();
-            Console.WriteLine(" ");
+                firstMine.playerInjury();
+                gago.mining();
 
+                Console.WriteLine("After one hit");
+                Console.WriteLine($"mine name is {firstMine.gName}");
+                Console.WriteLine($"mine type is {firstMine.type}");
+                Console.WriteLine($"mine amount is {firstMine.gAmount}");
+                Console.WriteLine($"mine state is {firstMine.gState}");
+
+                Console.WriteLine($"miners name is {gago.gminerName}");
+                Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
+                Console.Write("miners healt: "); gago.healthIndicator();
+              
+
+                if (gago.gHealth <= 0)
+                { Console.WriteLine($"{gago.gminerName} is dead");
+                    ok = "n";
+                    
+                } else if (firstMine.gAmount <= 10)
+                {
+                    Console.WriteLine($"{firstMine.gName} is too poor");
+                    ok = "n";
+                }
+                else {
+                    Console.WriteLine("y for another hit, n for exit ");
+                    ok = Console.ReadLine();
+                }
+                
+
+            }
+            Console.Write("Game over, press any key to exit");
             Console.Read();
+
+            
         }
     }
 }
