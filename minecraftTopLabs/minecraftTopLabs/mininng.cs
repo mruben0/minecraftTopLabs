@@ -10,8 +10,8 @@ namespace minecraftTopLabs
 
     //հատուկ ստեղծված կլաս` delegate պահելու համար
    public class mininng
-    {
-        public delegate int mining();
-        public delegate int injury();
+    { 
+        public delegate int mining(int Ph);
+        public delegate int injury(mineType type);
     }
 }

@@ -14,7 +14,7 @@ namespace minecraftTopLabs
         string minerName;
         public string gminerName
         {
-            get { return minerName.ToUpper(); }
+            get { return minerName; }
             set
             {
                 if (!string.IsNullOrWhiteSpace(value))
@@ -89,7 +89,7 @@ namespace minecraftTopLabs
         //ստեղծում եմ place, որը համարժեք է Mine-ի type-ին, որ ըստ դրա 
         //պակասի խաղացողի առողջությունը
         public mineType place;
-        public int injury()
+        public int injury(mineType place)
         {
             if (place == mineType.uran)
             {
@@ -105,7 +105,7 @@ namespace minecraftTopLabs
 
         {
            
-            mining();
+            mining(gPerHit);
         }
 
     }

@@ -67,21 +67,21 @@ namespace minecraftTopLabs
         }
 
         //ստեղծում եմ PH, որը հետո հավասար կլինի խաղացողի perHit-ին
-        public int PH;
+        //public int PH;
         
         //delegate -ով ստեղծում եմ ֆունկցիա, որից կախված խաղացողը կվնասվի
         public mininng.injury playerInjury { get; set; }
         public void injury()
         {
-            injury();
+            playerInjury(type);
         }
 
         //delegate-Ով ֆունկցիա, որը կպակասեցնի amount-ը
-        public int pooring()
+        public int pooring( int Ph)
         {
           
             
-            gAmount -= PH;
+            gAmount -= Ph;
             return gAmount;
         }
 

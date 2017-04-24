@@ -14,9 +14,11 @@ namespace minecraftTopLabs
         {
 
             mine firstMine = new mine();
+
             Console.Write("set name for mine ");
             firstMine.gName = Console.ReadLine();
-            Console.Write("select type for mine 1. for uran, 2. for gold, 3 for silver ");
+
+            Console.Write($"select type for {firstMine.gName} 1. for uran, 2. for gold, 3 for silver ");
             int t = Convert.ToInt32(Console.ReadLine());
             if (t == 1)
                 firstMine.type = mineType.uran;
@@ -24,55 +26,53 @@ namespace minecraftTopLabs
                 firstMine.type = mineType.gold;
             else firstMine.type = mineType.silver;
 
-            Console.Write("add amount (0 to 10 000) ");
+            Console.Write($"add amount of {firstMine.type} to {firstMine.gName} (0 to 10 000) ");
             firstMine.gAmount = Convert.ToInt32(Console.ReadLine());
 
 
             miner gago = new miner();
+
             Console.Write("set miners name ");
             gago.gminerName = Console.ReadLine();
-            Console.Write("miners power (from 1 to 100) ");
+
+            Console.Write($"{gago.gminerName}'s power (from 1 to 100) ");
             gago.gPerHit = Convert.ToInt32(Console.ReadLine());
-            Console.Write("miners health(from 1 to 20) ");
+
+            Console.Write($"{gago.gminerName}'s health (from 1 to 20) ");
             gago.gHealth = Convert.ToInt32(Console.ReadLine());
+
             gago.mining = firstMine.pooring;
-            gago.place = firstMine.type;
+
 
             string ok = "y";
             while (ok == "y")
             {
                
 
-                Console.WriteLine("Before mining");
+                Console.WriteLine("\n Before mining");
 
                 Console.WriteLine($"mine name is {firstMine.gName}");
-                Console.WriteLine($"mine type is {firstMine.type}");
-                Console.WriteLine($"mine amount is {firstMine.gAmount}");
-                Console.WriteLine($"mine state is {firstMine.gState}");
+                Console.WriteLine($"{firstMine.gName}'s type is {firstMine.type}");
+                Console.WriteLine($"{firstMine.gName}'s amount is {firstMine.gAmount} of {firstMine.type}");
+                Console.WriteLine($"{firstMine.gName}'s state is {firstMine.gState}");
 
                 Console.WriteLine($"miner's name is {gago.gminerName}");
-                Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
+                Console.WriteLine($"{gago.gminerName} can earn {gago.gPerHit} of {firstMine.type} per hit");
                 Console.Write("miner's health: "); gago.healthIndicator();
                 Console.WriteLine(" ");
                 
 
-                firstMine.playerInjury = gago.injury;
+                firstMine.playerInjury += gago.injury;
 
-
-                firstMine.PH = gago.gPerHit;
-
-                firstMine.playerInjury();
-                gago.mining();
+                gago.working();
+                firstMine.injury();
 
                 Console.WriteLine("After one hit");
-                Console.WriteLine($"mine name is {firstMine.gName}");
-                Console.WriteLine($"mine type is {firstMine.type}");
-                Console.WriteLine($"mine amount is {firstMine.gAmount}");
-                Console.WriteLine($"mine state is {firstMine.gState}");
+                Console.WriteLine($"{firstMine.gName} amount is {firstMine.gAmount}");
+                Console.WriteLine($"{firstMine.gName} state is {firstMine.gState}");
+                Console.WriteLine($"{gago.gminerName}'s healt: "); gago.healthIndicator();
 
-                Console.WriteLine($"miners name is {gago.gminerName}");
-                Console.WriteLine($"miner can earn {gago.gPerHit} {firstMine.type} per hit");
-                Console.Write("miners healt: "); gago.healthIndicator();
+                Console.Write("\n \n \n ");
               
 
                 if (gago.gHealth <= 0)
@@ -85,8 +85,9 @@ namespace minecraftTopLabs
                     ok = "n";
                 }
                 else {
-                    Console.WriteLine("y for another hit, n for exit ");
-                    ok = Console.ReadLine();
+                    Console.WriteLine("ENTER for another hit, Esc for exit ");
+                    if (Console.ReadKey().Key == ConsoleKey.Enter)
+                        ok = "y";
                 }
                 
 

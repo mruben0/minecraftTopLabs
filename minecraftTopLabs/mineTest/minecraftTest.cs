@@ -50,8 +50,8 @@ namespace mineTest
             mukuch.gPerHit = 150;
             Assert.AreEqual(100, mukuch.gPerHit);
 
-            testMine.PH = mukuch.gPerHit;
-            mukuch.mining = testMine.pooring;
+            
+            mukuch.mining += testMine.pooring;
 
             mukuch.working();
             //ստուգում եմ mining ֆունկցիան, որի դեպքում
