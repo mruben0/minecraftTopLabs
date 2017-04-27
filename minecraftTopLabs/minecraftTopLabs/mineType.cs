@@ -8,6 +8,6 @@ namespace minecraftTopLabs
 {
     public enum mineType
     {
-        uran = 1, gold, silver
+        uran = 1, gold, silver, empty
     }
 }
